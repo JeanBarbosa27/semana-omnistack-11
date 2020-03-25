@@ -1,0 +1,20 @@
+{
+  "name": "be-the-hero-back-end",
+  "version": "0.1.0",
+  "description": "Esse projeto foi baseado na Semana Omnistack 11, que ocorreu entre os dias 23 a 29 de março de 2020. A aplicação visa conectar ongs precisando de ajuda financeira em seus projetos com pessoas que estejam dispostas a ajudar. Aqui no Back-End do projeto estarão disponibilizadas as rotas de API e a comunicação com o banco de dados.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "author": "Jean Barbosa",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "knex": "^0.20.13",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
