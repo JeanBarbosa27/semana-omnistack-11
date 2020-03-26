@@ -2,14 +2,14 @@ const connection = require('../database/connection');
 
 module.exports = {
   async index(request, response) {
-
     const { page = 1 } = request.query;
+    const pageLimit = 5;
     const [count] = await connection('incidents').count();
 
     const incidents = await connection('incidents')
       .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
-      .limit(5)
-      .offset((page - 1) * 5)
+      .limit(pageLimit)
+      .offset((page - 1) * pageLimit)
       .select('*')
       .select([
         'incidents.*',
