@@ -8,17 +8,18 @@ Minha intenção com esse projeto é além de aplicar os conhecimentos adquirido
 
 ## Instalação do projeto
 Como dito acima, esse projeto apesar de ser todo baseado em JavaScript, utiliza três formas diferentes de build e de rodar o ambiente localmente, sendo assim, para conseguir iniciar qualquer alteração nesse projeto, é necessário ter instalado na sua máquina:
- - [Editor de texto(sugiro o VS Code)](https://code.visualstudio.com/download);
- - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git);
- - [Node](https://nodejs.org/en/download/);
- - [NPM](https://www.npmjs.com/package/npm);
- - [Expo (usado no desenvolvimento do app com o React Native)](https://docs.expo.io/versions/latest/get-started/installation/#installing-expo-cli);
- - **Essas opções abaixo na verdade não são obrigatórias, mas seriam interessante ter na máquina, para testar a API sem precisar ficar inspecionando pelo front**
-  - [Insomnia](https://support.insomnia.rest/article/23-installation) ou
-  - [Postman](https://learning.postman.com/docs/postman/launching-postman/installation-and-updates/).
+  - [Editor de texto (sugiro o VS Code)](https://code.visualstudio.com/download);
+  - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git);
+  - [Node](https://nodejs.org/en/download/);
+  - [NPM](https://www.npmjs.com/package/npm);
+  - [Expo (usado no desenvolvimento do app com o React Native)](https://docs.expo.io/versions/latest/get-started/installation/#installing-expo-cli);
+  - **Essas opções abaixo na verdade não são obrigatórias, mas seriam interessante ter na máquina, para testar a API sem precisar ficar inspecionando pelo front**
+    - [Insomnia](https://support.insomnia.rest/article/23-installation) 
+    ou
+    - [Postman](https://learning.postman.com/docs/postman/launching-postman/installation-and-updates/).
 
  ## Rodando o projeto localmente
- Para facilitar encontrar os conteúdos de toda a aplicação, optei por hospedar todas as stacks em um único repositório, sendo assim, para rodar localmente será necessário acessar cada uma das pastas, instalar as dependêcias delas com `npm install` ou `yarn install` e então abrir cada pasta em uma aba separada do terminal e rodar o comando `npm start` ou `yarn start`.
+ Para encontrar os conteúdos de toda a aplicação facilmente, optei por hospedar todas as stacks em um único repositório, sendo assim, para rodar localmente será necessário acessar cada uma das pastas via terminal (sugiro já abrir logo uma aba para cada pasta), instalar as dependêcias delas com `npm install` ou `yarn install` e em seguida rodar o comando `npm start` ou `yarn start`.
 
  ## Build para produção
  Para colocar esse projeto no ar, será necessário: 
