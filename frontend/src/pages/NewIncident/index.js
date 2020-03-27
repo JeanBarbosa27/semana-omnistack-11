@@ -65,7 +65,7 @@ export default function NewIncident () {
             type="text" 
             placeholder="Valor em reais"
             value={value}
-            onChange={(event) => setValue(event.target.value)}
+            onChange={(event) => setValue(event.target.value.replace(',', '.'))}
           />
           <button 
             className="button"
