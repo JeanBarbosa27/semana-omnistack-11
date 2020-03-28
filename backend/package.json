@@ -4,17 +4,22 @@
   "description": "Esse projeto foi baseado na Semana Omnistack 11, que ocorreu entre os dias 23 a 29 de março de 2020. A aplicação visa conectar ongs precisando de ajuda financeira em seus projetos com pessoas que estejam dispostas a ajudar. Aqui no Back-End do projeto estarão disponibilizadas as rotas de API e a comunicação com o banco de dados.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/server.js",
+    "test": "cross-env NODE_ENV=test jest"
   },
   "author": "Jean Barbosa",
   "license": "ISC",
   "dependencies": {
+    "celebrate": "^12.0.1",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "knex": "^0.20.13",
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "jest": "^25.2.3",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }
