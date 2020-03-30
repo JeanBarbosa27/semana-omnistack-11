@@ -6,6 +6,7 @@ import api from '../../services/api';
 
 import logo from '../../assets/logo.svg';
 import { FiArrowLeft } from 'react-icons/fi'
+import Modal from '../../components/layouts/Modal';
 
 export default function Register () {
   const [name, setName] = useState('');
@@ -14,6 +15,20 @@ export default function Register () {
   const [city, setCity] = useState('');
   const [uf, setUf] = useState('');
   const history = useHistory();
+
+  const [ongId, setOngId] = useState('')
+
+  function modalOnClose() {
+    history.push('/')
+  }
+
+  const modal = ongId !== ''
+                  ? (
+                    <Modal type="success" title="Cadastro concluído!" onClose={modalOnClose} >
+                      Parabéns, seu cadastro foi concluído com sucesso! Anote sua ID para realizar o login: {ongId}
+                    </Modal>
+                  )
+                  : ''
 
   async function handleRegister (event) {
     event.preventDefault();
@@ -27,8 +42,7 @@ export default function Register () {
 
     try {
       const response = await api.post('ongs', data)
-      alert(`Id cadastrado: ${response.data.id}`);
-      history.push('/');
+      setOngId(response.data.id);
     } catch (error) {
       console.error('error: ', error);
       alert('Erro ao realizar o cadastro, por favor tente novamente.')
@@ -94,6 +108,7 @@ export default function Register () {
           </button>
         </form>
       </div>
+      {modal}
     </div>
   )
 };
