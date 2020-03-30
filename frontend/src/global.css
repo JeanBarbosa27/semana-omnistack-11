@@ -84,3 +84,25 @@ form textarea {
 .button:hover {
   filter: brightness(90%);
 }
+
+/*
+  TODO: style guide:
+  light: #f0f0f5;
+  dark: #333333;
+  
+  primary: #e02041;
+  primary__light: #ff5f6c;
+  primary__dark: #a6001b;
+
+  text: #41414d;
+  text__light: #737380;
+
+  grey scale:
+  grey: #9e9e9e;
+  grey__light: #cfcfcf;
+  grey__dark: #707070;
+
+  success: #00e676
+  sucesss__light: #66ffa6;
+  success__dark: #00b248
+*/
