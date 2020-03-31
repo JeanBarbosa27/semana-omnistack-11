@@ -11,7 +11,7 @@ module.exports = {
       .first();
 
     if(!ong) {
-      return response.status(400).json({ error : 'No ongs with id: ' + ong_id });
+      return response.status(400).json({ error : 'No ongs with id: ' + id });
     }
 
     return response.json({ name: ong.name });
