@@ -7,24 +7,40 @@ import api from '../../services/api';
 import herosImg from '../../assets/heroes.png';
 import logo from '../../assets/logo.svg';
 import { FiLogIn } from 'react-icons/fi'
+import Modal from '../../components/layouts/Modal';
 
 export default function Logon () {
   const [id, setId] = useState('');
   const history = useHistory();
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalContent, setModalContent] = useState('');
+
+  const modal = showModal
+                  ? (
+                    <Modal type={modalType} title={modalTitle}>
+                      {modalContent}
+                    </Modal>
+                  )
+                  : ''
   
   function handleLogin(event) {
     event.preventDefault();
 
-    try {
-      api.post('session', { id })
-        .then(response => {
-          localStorage.setItem('ongId', id);
-          localStorage.setItem('ongName', response.data.name);
-          history.push('/profile');
-        });
-    } catch(error) {
-      alert('Ocorreu um erro ao realizar o login, por favor tente novamente!')
-    }
+    api.post('session', { id })
+      .then(response => {
+        localStorage.setItem('ongId', id);
+        localStorage.setItem('ongName', response.data.name);
+        history.push('/profile');
+      }).catch(error => {
+        console.error('error: ', error);
+        setModalType('error')
+        setModalTitle('Erro ao realizar o login!')
+        setModalContent('Ocorreu um erro ao realizar o login da sua ONG, por favor confirme a sua ID e tente novamente.')
+        setShowModal(true)
+      });
   }
 
   return (
@@ -53,6 +69,7 @@ export default function Logon () {
         </form>
       </section>
       <img src={herosImg} alt="Imagem com representação dos heros"/>
+      {modal}
     </div>
   )
 };

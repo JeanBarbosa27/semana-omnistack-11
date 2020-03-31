@@ -5,7 +5,21 @@ import './styles.css'
 import api from '../../services/api';
 
 import logo from '../../assets/logo.svg';
-import { FiPower, FiTrash2 } from 'react-icons/fi'
+import { FiPower, FiTrash2 } from 'react-icons/fi';
+import Modal from '../../components/layouts/Modal';
+
+const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalContent, setModalContent] = useState('');
+
+  const modal = showModal
+                  ? (
+                    <Modal type={modalType} title={modalTitle}>
+                      {modalContent}
+                    </Modal>
+                  )
+                  : '';
 
 export default function Profile () {
   const [incidents, setIncidents] = useState([]);
@@ -31,7 +45,11 @@ export default function Profile () {
         }
       })
     } catch(error) {
-      alert('Erro ao carregar os casos, por favor tente novamente')
+      console.error('error: ', error);
+      setModalType('error')
+      setModalTitle('Erro ao carregar os casos!')
+      setModalContent('Ocorreu um erro ao tentar carregar os casos para a sua ONG, por favor tente novamente.')
+      setShowModal(true)
     }
   }, [ongId])
 
@@ -48,6 +66,11 @@ export default function Profile () {
     } catch(error) {
       console.log('error: ', error)
       alert('Ocorreu um erro ao deleter o incidente, por favor tente novamente')
+      console.error('error: ', error);
+      setModalType('error')
+      setModalTitle('Erro ao deletar o caso!')
+      setModalContent('Ocorreu um erro ao tentar deletar este caso da sua ONG, por favor tente novamente.')
+      setShowModal(true)
     }
   }
 
@@ -94,6 +117,7 @@ export default function Profile () {
 
         ))}
       </ul>
+      {modal}
     </div>
   )
 };

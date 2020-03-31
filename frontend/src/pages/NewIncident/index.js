@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import './styles.css'
 import logo from '../../assets/logo.svg';
 import { FiArrowLeft } from 'react-icons/fi';
+import Modal from '../../components/layouts/Modal';
 
 import api from '../../services/api';
 
@@ -12,6 +13,19 @@ export default function NewIncident () {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const ongId = localStorage.getItem('ongId');
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalContent, setModalContent] = useState('');
+
+  const modal = showModal
+                  ? (
+                    <Modal type={modalType} title={modalTitle}>
+                      {modalContent}
+                    </Modal>
+                  )
+                  : '';
 
   const data = {
     title,
@@ -30,7 +44,10 @@ export default function NewIncident () {
       history.push('/profile');
     } catch (error) {
       console.error('error: ', error);
-      alert('Ocorreu um erro ao cadastrar o caso, por favor tente novamente.')
+      setModalType('error')
+      setModalTitle('Erro ao cadastrar novo caso!')
+      setModalContent('Ocorreu um erro ao realizar o cadastro desse novo caso para a sua ONG, por favor tente novamente.')
+      setShowModal(true)
     }
   }
 
@@ -75,6 +92,7 @@ export default function NewIncident () {
           </button>
         </form>
       </div>
+      {modal}
     </div>
   )
 };

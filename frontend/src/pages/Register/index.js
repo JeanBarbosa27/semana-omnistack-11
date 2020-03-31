@@ -16,16 +16,19 @@ export default function Register () {
   const [uf, setUf] = useState('');
   const history = useHistory();
 
-  const [ongId, setOngId] = useState('')
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalContent, setModalContent] = useState('');
 
   function modalOnClose() {
     history.push('/')
   }
 
-  const modal = ongId !== ''
+  const modal = showModal
                   ? (
-                    <Modal type="success" title="Cadastro concluído!" onClose={modalOnClose} >
-                      Parabéns, seu cadastro foi concluído com sucesso! Anote sua ID para realizar o login: {ongId}
+                    <Modal type={modalType} title={modalTitle} onClose={modalOnClose} >
+                      {modalContent}
                     </Modal>
                   )
                   : ''
@@ -42,12 +45,18 @@ export default function Register () {
 
     try {
       const response = await api.post('ongs', data)
-      setOngId(response.data.id);
+      setModalType('success');
+      setModalTitle('Cadastro concluído!');
+      setModalContent(`Parabéns, seu cadastro foi concluído com sucesso! Anote sua ID para realizar o login: ${response.data.id}`);
+      setShowModal(true)
     } catch (error) {
       console.error('error: ', error);
-      alert('Erro ao realizar o cadastro, por favor tente novamente.')
-    }
+      setModalType('error')
+      setModalTitle('Erro ao realizar o cadastro!')
+      setModalContent('Ocorreu um erro ao realizar o cadastro da sua ONG, por favor tente novamente.')
+      setShowModal(true)
 
+    }
   }
 
   return (
