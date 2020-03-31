@@ -8,7 +8,7 @@ export default function Modal({ title, type, onClose, children }) {
 
   function closeModal() {
     setModalClasses('modal close');
-    onClose();
+    onClose && onClose();
   }
 
   return (
