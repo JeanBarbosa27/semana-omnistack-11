@@ -3,6 +3,8 @@ import { FiX } from 'react-icons/fi';
 
 import './styles.css'
 
+//TODO: Melhorar a exibição dessa modal com o Context API, para decidir quando exibir ou não o modal via state, com a propriedade show, por exemplo. closeModal apenas setaria essa variável para false e teria um useEffect para ler a alteração desse state e alterar a classe css
+
 export default function Modal({ title, type, onClose, children }) {
   const [modalClasses, setModalClasses] = useState('modal')
 
