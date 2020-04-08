@@ -8,18 +8,6 @@ import logo from '../../assets/logo.svg';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 import Modal from '../../components/layouts/Modal';
 
-const [showModal, setShowModal] = useState(false);
-  const [modalType, setModalType] = useState('');
-  const [modalTitle, setModalTitle] = useState('');
-  const [modalContent, setModalContent] = useState('');
-
-  const modal = showModal
-                  ? (
-                    <Modal type={modalType} title={modalTitle}>
-                      {modalContent}
-                    </Modal>
-                  )
-                  : '';
 
 export default function Profile () {
   const [incidents, setIncidents] = useState([]);
@@ -28,6 +16,18 @@ export default function Profile () {
   const ongId = localStorage.getItem('ongId')
   const ongName = localStorage.getItem('ongName')
   
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalContent, setModalContent] = useState('');
+  
+  const modal = showModal
+                  ? (
+                    <Modal type={modalType} title={modalTitle}>
+                      {modalContent}
+                    </Modal>
+                  )
+                  : '';
 
   useEffect(() => {
     try {
@@ -70,7 +70,7 @@ export default function Profile () {
       setModalType('error')
       setModalTitle('Erro ao deletar o caso!')
       setModalContent('Ocorreu um erro ao tentar deletar este caso da sua ONG, por favor tente novamente.')
-      setShowModal(true)
+      // setShowModal(true)
     }
   }
 
